@@ -58,7 +58,7 @@ class test():
 
     '''
     def fit(self, y_proba, y_true, bins=10, round_range=False):
-    '''
+        '''
         Fit the initialized object to the observed labels.
 
         Parameters
