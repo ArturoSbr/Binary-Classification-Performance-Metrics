@@ -59,15 +59,15 @@ class test():
     '''
     def fit(self, y_proba, y_true, bins=10, round_range=False):
     '''
-    Fit the initialized object to the observed labels.
+        Fit the initialized object to the observed labels.
 
-    Parameters
-    ----------
-    y_proba: array-like
-        Array-like structure that has the predicted probabilities for each observation.
-    y_true: array-like
-        Array-like structure that has the observed classes for each observation.
-    '''
+        Parameters
+        ----------
+        y_proba: array-like
+            Array-like structure that has the predicted probabilities for each observation.
+        y_true: array-like
+            Array-like structure that has the observed classes for each observation.
+        '''
         n0, n1 = len(y_proba) - y_true.sum(), y_true.sum()
         t = pd.DataFrame({'y_proba':y_proba, 'y_true':y_true})
         t['range'] = pd.qcut(x=y_proba, q=bins, labels=None, retbins=False, duplicates='drop')
