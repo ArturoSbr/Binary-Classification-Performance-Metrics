@@ -10,63 +10,64 @@ class test():
 
     Attributes
     ----------
-    obs:
-        The number of observations in the data.
-    class0: int
-        The number of observations labeled 0 in `y_true`.
-    class1: int
-        The number of observations labeled 1 in `y_true`.
-    ks: float
-        The resulting coefficient of the Kolmogorov-Smirnoff test.
-    table: pandas.DataFrame
-        Results table of the test. The columns are:
-        - bin
-            Consecutive integers for the probability intervals in ascending order.
-        - range
-            Lower and upper limit of the predicted probabilites.
-        - size
-            Number of observations contained within each interval.
-        - class0
-            Number of observations of class 0 contained within each interval.
-        - class1
-            Number of observations of class 1 contained within each interval.
-        - odds
-            The ratio of `class0` divided by `class1` within each interval.
-        - class0_rate
-            The ratio of observations labeled 0 within each interval.
-        - class1_rate
-            The ratio of observations labeled 1 within each interval.
-        - remainder_total
-            The number of observations that have a probability greater than
-            the lower limit of each interval.
-        - remainder_class0
-            The number of observations of class 0 that have a predicted probability
-            greater than the lower limit of each interval.
-        - remainder_class1
-            The number of observations of class 1 that have a predicted probability
-            greater than the lower limit of each interval.
-        - cumulative_class0
-            The cumulative frequency for each interval of observations of class 0.
-        - cumulative_class1
-            The cumulative frequency for each interval of observations of class 1.
-        - abs_difference
-            The absolute difference between the cumulative ratio of both classes.
+        obs:
+            The number of observations in the data.
+        class0: int
+            The number of observations labeled 0 in `y_true`.
+        class1: int
+            The number of observations labeled 1 in `y_true`.
+        ks: float
+            The resulting coefficient of the Kolmogorov-Smirnoff test.
+        table: pandas.DataFrame
+            Results table of the test. The columns are:
+            - bin
+                Consecutive integers for the probability intervals in ascending order.
+            - range
+                Lower and upper limit of the predicted probabilites.
+            - size
+                Number of observations contained within each interval.
+            - class0
+                Number of observations of class 0 contained within each interval.
+            - class1
+                Number of observations of class 1 contained within each interval.
+            - odds
+                The ratio of `class0` divided by `class1` within each interval.
+            - class0_rate
+                The ratio of observations labeled 0 within each interval.
+            - class1_rate
+                The ratio of observations labeled 1 within each interval.
+            - remainder_total
+                The number of observations that have a probability greater than
+                the lower limit of each interval.
+            - remainder_class0
+                The number of observations of class 0 that have a predicted probability
+                greater than the lower limit of each interval.
+            - remainder_class1
+                The number of observations of class 1 that have a predicted probability
+                greater than the lower limit of each interval.
+            - cumulative_class0
+                The cumulative frequency for each interval of observations of class 0.
+            - cumulative_class1
+                The cumulative frequency for each interval of observations of class 1.
+            - abs_difference
+                The absolute difference between the cumulative ratio of both classes.
     
     Methods
     -------
-    fit(y_proba, y_true, bins, round_range)
+        fit(y_proba, y_true, bins, round_range)
+            Fit the initialized `test` object to the observed labels.
 
     '''
     def fit(self, y_proba, y_true, bins=10, round_range=False):
         '''
-        Fit the initialized object to the observed labels.
+        Fit the initialized `test` object to the observed labels.
 
         Parameters
         ----------
-        y_proba: array-like
-            Array-like structure that has the predicted probabilities for each observation.
-        y_true: array-like
-            Array-like structure that has the observed classes for each observation.
+            y_proba: array-like
+                Array-like structure that has the predicted probabilities for each observation.
+            y_true: array-like
+                Array-like structure that has the observed classes for each observation.
         '''
         n0, n1 = len(y_proba) - y_true.sum(), y_true.sum()
         t = pd.DataFrame({'y_proba':y_proba, 'y_true':y_true})
