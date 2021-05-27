@@ -86,7 +86,7 @@ class test():
         t['cumulative_class1'] = t['class1'].cumsum()
         t['abs_difference'] = (t['cumulative_class0'].div(n0) - t['cumulative_class1'].div(n1)).abs()
         if round_range:
-            t['range'] = t['range'].apply(lambda x: pd.Interval(int(round(x.left)), int(round(x.right))), axis=1)
+            t['range'] = t['range'].apply(lambda x: pd.Interval(int(round(x.left)), int(round(x.right))))
         t = t[['bin','range','size','class0','class1','odds','class0_rate',
                'class1_rate','remainder_total','remainder_class0','remainder_class1',
                'cumulative_class0','cumulative_class1','abs_difference']]
